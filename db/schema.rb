@@ -10,6 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2020_06_15_221519) do
+
+  create_table "counties", force: :cascade do |t|
+    t.string "name"
+    t.integer "phase_id"
+  end
+
+  create_table "phases", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "user_name"
+  end
+
+  create_table "watch_list", force: :cascade do |t|
+    t.integer "county_id"
+    t.integer "user_id"
+  end
 
 end
