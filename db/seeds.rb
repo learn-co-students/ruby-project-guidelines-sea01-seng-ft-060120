@@ -1,5 +1,3 @@
-require 'pry'
-
 # County.destroy_all
 # Watch.destroy_all
 # User.destroy_all
@@ -91,3 +89,6 @@ snohomish = County.create(name: "Snohomish", phase_id: phase2.id)
 island = County.create(name: "Island", phase_id: phase2.id)
                   
 kitsap = County.create(name: "Kitsap", phase_id: phase2.id)
+
+#user
+gabriel = User.create(user_name: "Gabriel")

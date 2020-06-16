@@ -13,3 +13,8 @@ task :setup do
     Rake::Task["db:migrate"].invoke
     Rake::Task["db:seed"].invoke
 end
+
+desc "Start Tracker"
+task :play do 
+    sh "ruby bin/run.rb"
+end
