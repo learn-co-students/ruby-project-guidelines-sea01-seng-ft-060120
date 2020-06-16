@@ -1,7 +1,9 @@
-County.destroy_all
-Watch.destroy_all
-User_Id.destroy_all
-Phase.destroy_all
+require 'pry'
+
+# County.destroy_all
+# Watch.destroy_all
+# User.destroy_all
+# Phase.destroy_all
 
 #creation of county fillers and hard-assigned phase (to be replaced with web scraper for phase updating)
 king   = County.create(
@@ -97,3 +99,5 @@ phase4 = Phase.create(
                   - Concert venues
                   - Large sporting events
                   - Resume unrestricted stang of worksites, but continue to practice physical distancing and good hygiene")
+
+                  # binding.pry

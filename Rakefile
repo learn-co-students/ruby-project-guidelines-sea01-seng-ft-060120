@@ -1,11 +1,6 @@
 require_relative 'config/environment'
 require 'sinatra/activerecord/rake'
 
-desc "Prints hello world"
-task :hello_world do
-    puts "Hello World"
-end
-
 desc "Starts a console session"
 task :console do 
     # ActiveRecord::Base.logger = Logger.new(STDOUT)    
@@ -19,7 +14,7 @@ task :setup do
     Rake::Task["db:seed"].invoke
 end
 
-desc "Start the sorting"
-task :play do 
-    sh "ruby bin/run.rb"
-end
+# desc "Start the sorting"
+# task :play do 
+#     sh "ruby bin/run.rb"
+# end
