@@ -3,7 +3,7 @@ require 'sinatra/activerecord/rake'
 
 desc "Starts a console session"
 task :console do 
-    # ActiveRecord::Base.logger = Logger.new(STDOUT)    
+    ActiveRecord::Base.logger = Logger.new(STDOUT)    
     binding.pry
 end
 
@@ -13,8 +13,3 @@ task :setup do
     Rake::Task["db:migrate"].invoke
     Rake::Task["db:seed"].invoke
 end
-
-# desc "Start the sorting"
-# task :play do 
-#     sh "ruby bin/run.rb"
-# end

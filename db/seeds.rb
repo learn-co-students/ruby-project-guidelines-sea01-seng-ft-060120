@@ -5,31 +5,10 @@ require 'pry'
 # User.destroy_all
 # Phase.destroy_all
 
-#creation of county fillers and hard-assigned phase (to be replaced with web scraper for phase updating)
-king   = County.create(
-  name: "King",
-  phase: "Modified Phase 1")
-
-pierce = County.create(
-  name: "Pierce", 
-  phase: "Phase 2")
-
-snohomish = County.create(
-  name: "Snohomish", 
-  phase: "Phase 2")
-
-island = County.create(
-  name: "Island", 
-  phase: "Phase 2")
-
-kitsap = County.create(
-  name: "Kitsap",
-  phase: "Phase 2")
-
 #creation of phase fillers
 phase1 = Phase.create(
   name: "Phase 1",
-  description: "High-Risk Populations: Continue to Stay Home, Stay Healthy /n
+  description: "High-Risk Populations: Continue to Stay Home, Stay Healthy
                 Recreation: Some outdoor recreation (hunting, fishing, golf, boating, hiking)
                 Gatherings: 
                   - None (social) 
@@ -86,7 +65,8 @@ phase3 = Phase.create(
                   - Customer-facing government services (telework remains strongly encouraged)
                   - Libraries
                   - Museums
-                  - All other business activities not yet listed except for nightclubs and events with >50 people")
+                  - All other business activities not yet listed except for nightclubs and events with >50 people"
+)
 
 phase4 = Phase.create(
   name: "Phase 4",
@@ -98,6 +78,16 @@ phase4 = Phase.create(
                   - Nightclubs
                   - Concert venues
                   - Large sporting events
-                  - Resume unrestricted stang of worksites, but continue to practice physical distancing and good hygiene")
+                  - Resume unrestricted stang of worksites, but continue to practice physical distancing and good hygiene"
+)
 
-                  # binding.pry
+#creation of county fillers and hard-assigned phase (to be replaced with web scraper for phase updating
+king   = County.create(name: "King", phase_id: phasemodified1.id)
+
+pierce = County.create(name: "Pierce", phase_id: phase2.id)
+                  
+snohomish = County.create(name: "Snohomish", phase_id: phase2.id)
+                  
+island = County.create(name: "Island", phase_id: phase2.id)
+                  
+kitsap = County.create(name: "Kitsap", phase_id: phase2.id)
