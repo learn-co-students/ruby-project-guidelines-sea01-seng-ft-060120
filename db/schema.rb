@@ -26,9 +26,9 @@ ActiveRecord::Schema.define(version: 2020_06_15_221519) do
     t.string "user_name"
   end
 
-  create_table "watch_list", force: :cascade do |t|
-    t.integer "county_id"
-    t.integer "user_id"
+  create_table "watch_lists", id: false, force: :cascade do |t|
+    t.integer "county_id", null: false
+    t.integer "user_id", null: false
   end
 
 end

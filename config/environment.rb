@@ -1,5 +1,7 @@
 require 'bundler'
 require 'pry'
+# require 'tty prompt'
+
 Bundler.require
 
 require_all 'models'

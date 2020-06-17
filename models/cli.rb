@@ -7,7 +7,13 @@ class CLI
         @user = User.find_by(user_name: person)
         if @user
             puts "Thank you, #{user.user_name}!  Welcome back."
-            #######
+            prompt = TTY::Prompt.new
+            prompt.select("What would you like to do? Use vertical arrow keys to navigate, then press Enter to select.", %w(Show\ current\ watch\ list Add\ county\ to\ watch\ list Remove\ county\ from\ watch\ list Delete\ current\ watch\ list))
+            
+                
+            #tty - show current watch list /  add county to watch list /  remove county from watch list / delete current watch list
+            #puts current watch list#
+        # binding.pry
         else 
             @user = User.create(user_name: person)
             puts "Welcome, #{user.user_name}."
@@ -15,21 +21,13 @@ class CLI
             ##tty could be used here later
             selected_county = gets.chomp
             @county = County.find_by(name: selected_county)
-            @phase = Phase.find_by(name: "Phase 1")
-            #where @county.phase_id = 
-            puts "#{@county.name} is in #{@phase.name}, which means #{@phase.description}."
+            puts "#{@county.name} is in #{@county.phase.name}, which means: \n#{@county.phase.description}."
+            #press something to create a watch list and add this county to it#
         end
     end
 end
 
-    
-# king   = County.create(name: "King", phase_id: phasemodified1.id)
+#how to start a new line in a put statement >> \n
+#how to make multiple words into a single choice in TTY without having to \ escape every space between words
 
-
-#     else
-#        puts "User name not found. Please enter a user name to create your profile."
-#     end
-
-#questions
-##how to store a current user
-##how to associate county to phase when phase_id is only part of county (not explicitly in phase)
+## next step is adding some watch_lists to seeds or into CLI app, making sure that @user.counties returns correct data and is visible
