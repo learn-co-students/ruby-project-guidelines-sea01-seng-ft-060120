@@ -1,18 +1,5 @@
 class County < ActiveRecord::Base
     belongs_to :phase
-    has_many :watch
-    has_many :users, through: :watch
+    has_many :watch_lists
+    has_many :users, through: :watch_lists
 end
-
-
-
-
-
-
-
-
-
-#   create_table "counties", force: :cascade do |t|
-#     t.string "name"
-#     t.integer "phase_id"
-#   end

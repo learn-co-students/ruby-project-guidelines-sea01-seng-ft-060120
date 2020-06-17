@@ -1,17 +1,17 @@
-# County.destroy_all
-# Watch.destroy_all
-# User.destroy_all
-# Phase.destroy_all
+County.destroy_all
+WatchList.destroy_all
+User.destroy_all
+Phase.destroy_all
 
 #creation of phase fillers
 phase1 = Phase.create(
   name: "Phase 1",
-  description: "High-Risk Populations: Continue to Stay Home, Stay Healthy
-                Recreation: Some outdoor recreation (hunting, fishing, golf, boating, hiking)
+  description: "High-Risk Populations: Continue to Stay Home, Stay Healthy\n
+                Recreation: Some outdoor recreation (hunting, fishing, golf, boating, hiking)\n
                 Gatherings: 
                   - None (social) 
-                  - Drive-in spiritual service with one household per vehicle (spiritual)
-                Travel: Essential travel and limited non-essential travel for Phase 1 permissible activities
+                  - Drive-in spiritual service with one household per vehicle (spiritual)\n
+                Travel: Essential travel and limited non-essential travel for Phase 1 permissible activities\n
                 Business/Employers: 
                   - Essential businesses open
                   - Existing construction that meets agreed upon criteria
@@ -32,10 +32,10 @@ phasemodified1 = Phase.create(
 
 phase2 = Phase.create(
   name: "Phase 2",
-  description: "High-Risk Populations: Continue to Stay Home, Stay Healthy
-                Recreation: Outdoor recreation involving 5 or fewer people outside your household (camping, beaches, etc.)
-                Gatherings: Gather with no more than 5 people outside your household per week 
-                Travel: Essential travel and limited non-essential travel for Phase I & II permissible activities
+  description: "High-Risk Populations: Continue to Stay Home, Stay Healthy\n
+                Recreation: Outdoor recreation involving 5 or fewer people outside your household (camping, beaches, etc.)\n
+                Gatherings: Gather with no more than 5 people outside your household per week\n
+                Travel: Essential travel and limited non-essential travel for Phase I & II permissible activities\n
                 Business/Employers: 
                   - Remaining manufacturing
                   - Additional construction phases
@@ -49,13 +49,13 @@ phase2 = Phase.create(
 
 phase3 = Phase.create(
   name: "Phase 3",
-  description: "High-Risk Populations: Continue to Stay Home, Stay Healthy
+  description: "High-Risk Populations: Continue to Stay Home, Stay Healthy\n
                 Recreation: 
                   - Outdoor group rec. sports activities (50 or fewer people)
                   - Recreational facilities at <50% capacity (gyms, public pools, etc.)
-                  - Professional sports without audience participation (horseracing, baseball, etc.)
-                Gatherings: Allow gatherings with no more than 50 people
-                Travel: Resume non-essential travel
+                  - Professional sports without audience participation (horseracing, baseball, etc.)\n
+                Gatherings: Allow gatherings with no more than 50 people\n
+                Travel: Resume non-essential travel\n
                 Business/Employers:
                   - Restaurants/taverns <75% capacity/table size no larger than 10
                   - Bar areas in restaurant/taverns at <25% capacity
@@ -68,10 +68,10 @@ phase3 = Phase.create(
 
 phase4 = Phase.create(
   name: "Phase 4",
-  description: "High-Risk Populations: Resume public interactions, with physical distancing
-                Recreation: Resume all recreational activity
-                Gatherings: Allow gatherings with >50 people
-                Travel: Continue non-essential travel
+  description: "High-Risk Populations: Resume public interactions, with physical distancing\n
+                Recreation: Resume all recreational activity\n
+                Gatherings: Allow gatherings with >50 people\n
+                Travel: Continue non-essential travel\n
                 Business/Employers:
                   - Nightclubs
                   - Concert venues
@@ -92,3 +92,5 @@ kitsap = County.create(name: "Kitsap", phase_id: phase2.id)
 
 #user
 gabriel = User.create(user_name: "Gabriel")
+
+#watchlist
