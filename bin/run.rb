@@ -1,5 +1,7 @@
 require_relative '../config/environment'
 
+system("clear")
 
-
-puts "HELLO WORLD"
+app = CLI.new
+app.main_menu
+app.show_current_watch_list
