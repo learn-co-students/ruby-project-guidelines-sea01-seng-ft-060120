@@ -1,5 +1,8 @@
 require_relative '../config/environment'
 
+system("clear")
 
-
-puts "HELLO WORLD"
+app = CLI.new
+app.intro
+app.main_menu
+app.return_home
