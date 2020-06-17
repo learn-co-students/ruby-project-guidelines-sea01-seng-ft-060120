@@ -3,5 +3,6 @@ require_relative '../config/environment'
 system("clear")
 
 app = CLI.new
+app.intro
 app.main_menu
-app.show_current_watch_list
+app.return_home

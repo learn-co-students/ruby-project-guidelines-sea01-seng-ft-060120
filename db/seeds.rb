@@ -94,3 +94,11 @@ kitsap = County.create(name: "Kitsap", phase_id: phase2.id)
 gabriel = User.create(user_name: "Gabriel")
 
 #watchlist
+current_list = WatchList.create("king", "phase")
+
+
+
+# create_table "watch_lists", id: false, force: :cascade do |t|
+#   t.integer "county_id", null: false
+#   t.integer "user_id", null: false
+# end
