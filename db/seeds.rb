@@ -6,7 +6,8 @@ Phase.destroy_all
 #creation of phase fillers
 phase1 = Phase.create(
   phase_name: "Phase 1",
-  phase_description: "High-Risk Populations: Continue to Stay Home, Stay Healthy\n
+  phase_description: "\n
+                High-Risk Populations: Continue to Stay Home, Stay Healthy\n
                 Recreation: Some outdoor recreation (hunting, fishing, golf, boating, hiking)\n
                 Gatherings: 
                   - None (social) 
@@ -23,16 +24,30 @@ phase1 = Phase.create(
 
 phasemodified1 = Phase.create(
   phase_name: "Modified Phase 1",
-  phase_description: "High-Risk Populations:
-                Recreation:
-                Gatherings:
-                Travel:
+  phase_description: "\n
+                High-Risk Populations: Continue to Stay Home, Stay Healthy\n
+                Recreation: 
+                - All activities may operate subject to Phase 2 guidance.
+                - Limited practices for outdoor youth and adult recreation teams:
+                    - Players are limited to groups of five in separate parts of the field, separated by a buffer zone. 
+                    - Practice must follow social distancing of a minimum of five feet between players, with no contact.  
+                    - Each league, organization, or club must publish and follow a “return to play” safety plan. 
+                    - Parents and household members must not congregate on the sidelines during practice.\n
+                Gatherings: Only allowed outdoors with five or fewer people outside the household.\n
+                Travel: Essential travel and limited non-essential travel for Phase I & Mod I permissible activities\n
                 Business/Employers:
+                - All activities may operate according to Phase 2 guidance with the following exceptions:
+                    - In-Store retail: at no time may an establishment's occupancy be higher than 15% and indoor services are limited to 30 minutes.
+                    - Real Estate/Personal Services/Professional Services: at no time may the number of customers be more than 25% the number capable of being served at any one time.
+                    - Restaurants: all table and chairs sets must maintain 6 feet of distance; outdoor seating capacity at 50%; indoor at 25%\n
+                *note*: Those listed are for King County - your county may differ, as individual county policy changes are at the discretion of the Washington Department of Health.\n
+                **note**: Detailed (unclear) information can be found at https://kingcounty.gov/depts/health/covid-19/safe-start.aspx
                 ")
 
 phase2 = Phase.create(
   phase_name: "Phase 2",
-  phase_description: "High-Risk Populations: Continue to Stay Home, Stay Healthy\n
+  phase_description: "\n
+                High-Risk Populations: Continue to Stay Home, Stay Healthy\n
                 Recreation: Outdoor recreation involving 5 or fewer people outside your household (camping, beaches, etc.)\n
                 Gatherings: Gather with no more than 5 people outside your household per week\n
                 Travel: Essential travel and limited non-essential travel for Phase I & II permissible activities\n
@@ -49,7 +64,8 @@ phase2 = Phase.create(
 
 phase3 = Phase.create(
   phase_name: "Phase 3",
-  phase_description: "High-Risk Populations: Continue to Stay Home, Stay Healthy\n
+  phase_description: "\n
+                High-Risk Populations: Continue to Stay Home, Stay Healthy\n
                 Recreation: 
                   - Outdoor group rec. sports activities (50 or fewer people)
                   - Recreational facilities at <50% capacity (gyms, public pools, etc.)
@@ -68,7 +84,8 @@ phase3 = Phase.create(
 
 phase4 = Phase.create(
   phase_name: "Phase 4",
-  phase_description: "High-Risk Populations: Resume public interactions, with physical distancing\n
+  phase_description: "\n
+                High-Risk Populations: Resume public interactions, with physical distancing\n
                 Recreation: Resume all recreational activity\n
                 Gatherings: Allow gatherings with >50 people\n
                 Travel: Continue non-essential travel\n
@@ -80,12 +97,11 @@ phase4 = Phase.create(
 )
 
 #creation of county fillers and hard-assigned phase (to be replaced with web scraper for phase updating
-king  = County.create(county_name: "King", phase_id: phasemodified1.id)
+king = County.create(county_name: "King", phase_id: phasemodified1.id)
 pierce = County.create(county_name: "Pierce", phase_id: phase2.id)
 snohomish = County.create(county_name: "Snohomish", phase_id: phase2.id)
 island = County.create(county_name: "Island", phase_id: phase2.id)
 kitsap = County.create(county_name: "Kitsap", phase_id: phase2.id)
-snohomish = County.create(county_name: "Snohomish" phase_id: phase2.id)
 spokane = County.create(county_name: "Spokane", phase_id: phase2.id)
 clark = County.create(county_name: "Clark", phase_id: phase2.id)
 thurston = County.create(county_name: "Thurston", phase_id: phase2.id)
@@ -97,33 +113,5 @@ cowlitz = County.create(county_name: "Cowlitz", phase_id: phase2.id)
 grant = County.create(county_name: "Grant", phase_id: phase2.id)
 franklin = County.create(county_name: "Franklin", phase_id: phase1.id)
 lewis = County.create(county_name: "Lewis", phase_id: phase2.id)
-clallam = County.create(county_name: "clallam", phase_id: phase2.id)
+clallam = County.create(county_name: "Clallam", phase_id: phase2.id)
 cowlitz = County.create(county_name: "Cowlitz", phase_id: phase2.id)
-
-
-
-
-
-(King Pierce Snohomish Spokane Clark Thurston Kitsap Yakima Whatcome Benton Skagit Cowlitz Grant Franklin Island Lewis Clallam Chelan Grays Harbor Mason Walla\ Walla Whitman Kittitas Stevens Douglas Okanogan Jefferson Asotin Klickitat Pacific Adams San Juan Pend Oreille Skamania Lincoln Ferry Wahkiakum Columbia Garfield), per_page: 40, cycle: true, filter: true)
-
-
-
-
-
-
-
-
-
-
-#user
-gabriel = User.create(user_name: "Gabriel")
-
-# #watchlist
-# current_list = WatchList.create("king", "phase")
-
-
-
-# create_table "watch_lists", id: false, force: :cascade do |t|
-#   t.integer "county_id", null: false
-#   t.integer "user_id", null: false
-# end
