@@ -9,15 +9,14 @@ class CLI
     def main_menu 
         gets_current_watches
         prompt = TTY::Prompt.new
-        prompt.select("What would you like to do?", cycle: true, echo: false) do |menu|
+        prompt.select("What would you like to do?", cycle: true, echo: false) do |menu| sleep 0.5
             menu.choice "Create county Watch.", -> {create_single_watch}
             menu.choice "Show current county Watches.", -> {show_current_watches}
             menu.choice "Show description of Phase for a county you have a Watch on.", -> {show_phase_description}
-            menu.choice "Remove county from Watches.", -> {remove_county}
+            menu.choice "Remove a current Watch from a county.", -> {remove_county}
             menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
-            end
+        end
     end
-        
 
     def create_single_watch
         prompt = TTY::Prompt.new
@@ -25,13 +24,14 @@ class CLI
         local_county = County.find_by(county_name: county_watch)
         previous_county_watch = @local_user.single_watches.select{|single_watch| single_watch.county_id == local_county.id}
         previous_county_watch.length > 0 ? (puts "Watch already exists.") : SingleWatch.create(county_id: local_county.id, user_id: @local_user.id) && (puts "A Watch has been set on the selected county!");
-        prompt2 = TTY::Prompt.new
-        prompt2.select("What would you like to do?", cycle: true, echo: false) do |menu|
-        menu.choice "Show description of Phase for a county you have a Watch on.", -> {show_phase_description}
-        menu.choice "Go back to main menu", -> {main_menu}
-        menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
+        # prompt2 = TTY::Prompt.new
+        # prompt2.select("What would you like to do?", cycle: true, echo: false) do |menu|
+        # menu.choice "Show description of Phase for a county you have a Watch on.", -> {show_phase_description}
+        # menu.choice "Go back to main menu", -> {main_menu}
+        # menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
+        # end
+        main_menu
     end
-end
 
     def gets_current_watches
         @local_user = User.find(@local_user.id)
@@ -40,13 +40,15 @@ end
 
     def show_current_watches
         @current_watches.count > 0 ? (puts @current_watches) : (puts "You don't have any Watches to show right now.")
-        prompt2 = TTY::Prompt.new
-        prompt2.select("What would you like to do?", cycle: true, echo: false) do |menu|
-        menu.choice "Show description of Phase for a county you have a Watch on.", -> {show_phase_description}
-        menu.choice "Go back to main menu", -> {main_menu}
-        menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
+        # prompt2 = TTY::Prompt.new
+        # prompt2.select("What would you like to do?", cycle: true, echo: false) do |menu|
+        # menu.choice "Show description of Phase for a county you have a Watch on.", -> {show_phase_description}
+        # menu.choice "Go back to main menu", -> {main_menu}
+        # menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
+        # end
+        main_menu
     end
-end
+
     def show_phase_description
         if @current_watches.count > 0
             prompt = TTY::Prompt.new
@@ -55,13 +57,12 @@ end
             local_county = County.find_by(county_name: county_to_describe)
             phase_to_describe = Phase.select{|phase| phase.id == local_county.phase_id}
             puts phase_to_describe[0].phase_description
-            prompt2 = TTY::Prompt.new
-            prompt2.select("What would you like to do?", cycle: true, echo: false) do |menu|
-            menu.choice "Show description of Phase for a county you have a Watch on.", -> {show_phase_description}
-            menu.choice "Go back to main menu", -> {main_menu}
-            menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
-    end
-            # main_menu
+            # prompt2 = TTY::Prompt.new
+            # prompt2.select("What would you like to do?", cycle: true, echo: false) do |menu|
+            # menu.choice "Show description of Phase for a county you have a Watch on.", -> {show_phase_description}
+            # menu.choice "Go back to main menu", -> {main_menu}
+            # menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
+            # # main_menu
         else
             puts "You don't have a Watch on any counties right now."
         end
@@ -78,15 +79,16 @@ end
             user_watches = SingleWatch.all.select(user_id: local_watch[0].user_id)
             watches_to_delete = user_watches.where(county_id: local_watch[0].county_id).delete_all
             @local_user = User.find(@local_user.id)
-            puts "Removed county from your Watches."
+            puts "Removed Watch on selected county."
         else 
-            prompt3 = TTY::Prompt.new
-            prompt3.select("What would you like to do?", cycle: true, echo: false) do |menu|
-            menu.choice "Remove county from Watches.", -> {remove_county}
-            menu.choice "Go back to main menu", -> {main_menu}
-            menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
+            # prompt3 = TTY::Prompt.new
+            # prompt3.select("What would you like to do?", cycle: true, echo: false) do |menu|
+            # menu.choice "Remove county from Watches.", -> {remove_county}
+            # menu.choice "Go back to main menu", -> {main_menu}
+            # menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
             puts "You don't have any Watches to remove right now."
         end
+    main_menu
     end
-end
+    
 end

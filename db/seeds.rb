@@ -142,4 +142,3 @@ ferry = County.create(county_name: "Ferry", phase_id: phase3.id)
 wahkiakum = County.create(county_name: "Wahkiakum", phase_id: phase3.id)
 columbia = County.create(county_name: "Columbia", phase_id: phase3.id)
 garfield = County.create(county_name: "Garfield", phase_id: phase3.id)
-
