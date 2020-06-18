@@ -14,7 +14,6 @@ class CLI
             menu.choice "Show current county Watches.", -> {show_current_watches}
             menu.choice "Show description of Phase for a county you have a Watch on.", -> {show_phase_description}
             menu.choice "Remove county from Watches.", -> {remove_county}
-            menu.choice "Change user name", -> {change_user_name}
             menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
             end
     end
@@ -26,17 +25,16 @@ class CLI
         local_county = County.find_by(county_name: county_watch)
         previous_county_watch = @local_user.single_watches.select{|single_watch| single_watch.county_id == local_county.id}
         previous_county_watch.length > 0 ? (puts "Watch already exists.") : SingleWatch.create(county_id: local_county.id, user_id: @local_user.id) && (puts "A Watch has been set on the selected county!");
-        @local_user = User.find(@local_user.id)
+        # @local_user = User.find(@local_user.id)
         main_menu
     end
 
     def gets_current_watches
+        @local_user = User.find(@local_user.id)
         @current_watches = @local_user.counties.collect{|county| county.county_name + " County" + ", " + county.phase.phase_name}
     end
 
     def show_current_watches
-        # @current_watches.length > 0 ? (puts @current_watches) : (puts "You don't have any Watches to show right now.")
-        # @current_watches = @local_user.counties.collect{|county| county.county_name + " County" + ", " + county.phase.phase_name}
         @current_watches.count > 0 ? (puts @current_watches) : (puts "You don't have any Watches to show right now.")
         main_menu
     end
@@ -72,12 +70,4 @@ class CLI
         end
         main_menu
     end
-
-    # *** why did delete_all work but not destroy_all?  was it table duplicates or lack of primary id in single_watches table? ***
-    ##how to get started writing change_user_name method>>
-
-end
-
-def change_name
-    main_menu
 end
