@@ -25,9 +25,13 @@ class CLI
         local_county = County.find_by(county_name: county_watch)
         previous_county_watch = @local_user.single_watches.select{|single_watch| single_watch.county_id == local_county.id}
         previous_county_watch.length > 0 ? (puts "Watch already exists.") : SingleWatch.create(county_id: local_county.id, user_id: @local_user.id) && (puts "A Watch has been set on the selected county!");
-        # @local_user = User.find(@local_user.id)
-        main_menu
+        prompt2 = TTY::Prompt.new
+        prompt2.select("What would you like to do?", cycle: true, echo: false) do |menu|
+        menu.choice "Show description of Phase for a county you have a Watch on.", -> {show_phase_description}
+        menu.choice "Go back to main menu", -> {main_menu}
+        menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
     end
+end
 
     def gets_current_watches
         @local_user = User.find(@local_user.id)
@@ -36,9 +40,13 @@ class CLI
 
     def show_current_watches
         @current_watches.count > 0 ? (puts @current_watches) : (puts "You don't have any Watches to show right now.")
-        main_menu
+        prompt2 = TTY::Prompt.new
+        prompt2.select("What would you like to do?", cycle: true, echo: false) do |menu|
+        menu.choice "Show description of Phase for a county you have a Watch on.", -> {show_phase_description}
+        menu.choice "Go back to main menu", -> {main_menu}
+        menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
     end
-
+end
     def show_phase_description
         if @current_watches.count > 0
             prompt = TTY::Prompt.new
@@ -47,7 +55,13 @@ class CLI
             local_county = County.find_by(county_name: county_to_describe)
             phase_to_describe = Phase.select{|phase| phase.id == local_county.phase_id}
             puts phase_to_describe[0].phase_description
-            main_menu
+            prompt2 = TTY::Prompt.new
+            prompt2.select("What would you like to do?", cycle: true, echo: false) do |menu|
+            menu.choice "Show description of Phase for a county you have a Watch on.", -> {show_phase_description}
+            menu.choice "Go back to main menu", -> {main_menu}
+            menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
+    end
+            # main_menu
         else
             puts "You don't have a Watch on any counties right now."
         end
@@ -66,8 +80,13 @@ class CLI
             @local_user = User.find(@local_user.id)
             puts "Removed county from your Watches."
         else 
+            prompt3 = TTY::Prompt.new
+            prompt3.select("What would you like to do?", cycle: true, echo: false) do |menu|
+            menu.choice "Remove county from Watches.", -> {remove_county}
+            menu.choice "Go back to main menu", -> {main_menu}
+            menu.choice "Exit COVID-19 WA Phase Tracker" do exit! end
             puts "You don't have any Watches to remove right now."
         end
-        main_menu
     end
+end
 end
