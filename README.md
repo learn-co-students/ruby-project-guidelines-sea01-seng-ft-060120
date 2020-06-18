@@ -1,4 +1,34 @@
-# Module One Final Project Guidelines
+Covid by County  - CLI APP
+
+CLI APP design
+
+Table of Contents
+
+*General Info
+*Technologies
+*Setup
+*Status
+
+Introduction
+
+Welcome to Covid by county tracker app.  This CLI APP is designed to help keep track of Washington State Counties Covid 19 Phases.  You can do this by simply creating a username to start and then selecting the counties you would like to watch.
+
+Technologies
+
+Ruby 5.2
+
+Setup
+
+In terminal type ruby bin/run.rb
+
+Status
+
+Active
+
+
+
+
+<!-- # Module One Final Project Guidelines
 
 Congratulations, you're at the end of module one! You've worked crazy hard to get here and have learned a ton.
 
@@ -56,4 +86,4 @@ Projects need to be approved prior to launching into them, so take some time to 
 ```ruby
 # in config/environment.rb add this line:
 ActiveRecord::Base.logger = nil
-```
+``` -->
