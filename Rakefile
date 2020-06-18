@@ -1,7 +1,7 @@
 require_relative 'config/environment'
 require 'sinatra/activerecord/rake'
 require 'tty-prompt'
-prompt = TT::Prompt.new
+require 'tty-command'
 
 desc "Starts a console session"
 task :console do 

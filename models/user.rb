@@ -1,11 +1,18 @@
 class User < ActiveRecord::Base
-    has_many :watch_lists
-    has_many :counties, through: :watch_lists
+    has_many :single_watches
+    has_many :counties, through: :single_watches
 
-    @@watch_listing = []
+    def self.get_user_name
+        prompt = TTY::Prompt.new
+        initial_user_entry = prompt.ask("Welcome to COVID-19 Phase Tracker! Please enter your existing user name or enter your desired user name to create a new profile:", required: true)
+        local_user = self.find_by(user_name: initial_user_entry)
+            if local_user
+                puts "Thank you, #{local_user.user_name}!  Welcome back."
+            else
+                local_user = self.create(user_name: initial_user_entry)
+                puts "Profile created. Welcome, #{local_user.user_name}."
+            end
+        local_user
+    end
 
 end
-
-# def self.get_current_user_name
-
-# end

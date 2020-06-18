@@ -13,22 +13,22 @@
 ActiveRecord::Schema.define(version: 2020_06_15_221519) do
 
   create_table "counties", force: :cascade do |t|
-    t.string "name"
+    t.string "county_name"
     t.integer "phase_id"
   end
 
   create_table "phases", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "phase_name"
+    t.string "phase_description"
+  end
+
+  create_table "single_watches", id: false, force: :cascade do |t|
+    t.integer "county_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "user_name"
-  end
-
-  create_table "watch_lists", id: false, force: :cascade do |t|
-    t.integer "county_id", null: false
-    t.integer "user_id", null: false
   end
 
 end
