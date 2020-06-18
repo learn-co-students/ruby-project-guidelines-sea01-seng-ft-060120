@@ -6,7 +6,8 @@ Phase.destroy_all
 #creation of phase fillers
 phase1 = Phase.create(
   phase_name: "Phase 1",
-  phase_description: "\n
+  phase_description: "
+                P̳h̳a̳s̳e̳ ̳1̳\n
                 High-Risk Populations: Continue to Stay Home, Stay Healthy\n
                 Recreation: Some outdoor recreation (hunting, fishing, golf, boating, hiking)\n
                 Gatherings: 
@@ -20,11 +21,13 @@ phase1 = Phase.create(
                   - Auto/RV/boat/ORV sales
                   - Retail (curb-side pick-up orders only)
                   - Car washes
-                  - Pet walkers")
+                  - Pet walkers\n
+                  ")
 
 phasemodified1 = Phase.create(
   phase_name: "Modified Phase 1",
-  phase_description: "\n
+  phase_description: "
+                M̳o̳d̳i̳f̳i̳e̳d̳ ̳P̳h̳a̳s̳e̳ ̳1̳\n
                 High-Risk Populations: Continue to Stay Home, Stay Healthy\n
                 Recreation: 
                 - All activities may operate subject to Phase 2 guidance.
@@ -41,12 +44,13 @@ phasemodified1 = Phase.create(
                     - Real Estate/Personal Services/Professional Services: at no time may the number of customers be more than 25% the number capable of being served at any one time.
                     - Restaurants: all table and chairs sets must maintain 6 feet of distance; outdoor seating capacity at 50%; indoor at 25%\n
                 *note*: Those listed are for King County - your county may differ, as individual county policy changes are at the discretion of the Washington Department of Health.\n
-                **note**: Detailed (unclear) information can be found at https://kingcounty.gov/depts/health/covid-19/safe-start.aspx
+                **note**: Detailed (unclear) information can be found at https://kingcounty.gov/depts/health/covid-19/safe-start.aspx\n
                 ")
 
 phase2 = Phase.create(
   phase_name: "Phase 2",
-  phase_description: "\n
+  phase_description: "
+                P̳h̳a̳s̳e̳ ̳2̳\n
                 High-Risk Populations: Continue to Stay Home, Stay Healthy\n
                 Recreation: Outdoor recreation involving 5 or fewer people outside your household (camping, beaches, etc.)\n
                 Gatherings: Gather with no more than 5 people outside your household per week\n
@@ -60,11 +64,13 @@ phase2 = Phase.create(
                   - Professional services/office-based businesses (telework remains strongly encouraged)
                   - Hair and nail salons/barbers
                   - Pet grooming
-                  - Restaurants/taverns <50% capacity table size no larger than 5 (no bar-area seating)")
+                  - Restaurants/taverns <50% capacity table size no larger than 5 (no bar-area seating)\n
+                  ")
 
 phase3 = Phase.create(
   phase_name: "Phase 3",
-  phase_description: "\n
+  phase_description: "
+                P̳h̳a̳s̳e̳ ̳3̳\n
                 High-Risk Populations: Continue to Stay Home, Stay Healthy\n
                 Recreation: 
                   - Outdoor group rec. sports activities (50 or fewer people)
@@ -79,12 +85,13 @@ phase3 = Phase.create(
                   - Customer-facing government services (telework remains strongly encouraged)
                   - Libraries
                   - Museums
-                  - All other business activities not yet listed except for nightclubs and events with >50 people"
-)
+                  - All other business activities not yet listed except for nightclubs and events with >50 people\n
+                  ")
 
 phase4 = Phase.create(
   phase_name: "Phase 4",
-  phase_description: "\n
+  phase_description: "
+                P̳h̳a̳s̳e̳ ̳4̳\n
                 High-Risk Populations: Resume public interactions, with physical distancing\n
                 Recreation: Resume all recreational activity\n
                 Gatherings: Allow gatherings with >50 people\n
@@ -93,8 +100,8 @@ phase4 = Phase.create(
                   - Nightclubs
                   - Concert venues
                   - Large sporting events
-                  - Resume unrestricted stang of worksites, but continue to practice physical distancing and good hygiene"
-)
+                  - Resume unrestricted staffng of worksites, but continue to practice physical distancing and good hygiene\n
+                  ")
 
 #creation of county fillers and hard-assigned phase (to be replaced with web scraper for phase updating
 king = County.create(county_name: "King", phase_id: phasemodified1.id)
